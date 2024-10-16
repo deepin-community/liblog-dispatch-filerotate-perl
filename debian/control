@@ -1,7 +1,7 @@
 Source: liblog-dispatch-filerotate-perl
 Section: perl
 Priority: optional
-Build-Depends: debhelper (>= 5), quilt
+Build-Depends: debhelper (>= 7)
 Build-Depends-Indep: perl (>= 5.6.10-12), liblog-log4perl-perl, libdate-manip-perl, liblog-dispatch-perl, libparams-validate-perl
 Maintainer: Matthias Schmitz <matthias@sigxcpu.org>
 Standards-Version: 3.8.1

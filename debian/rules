@@ -15,10 +15,10 @@ PERL   ?= /usr/bin/perl
 PACKAGE = $(shell dh_listpackages)
 TMP     = $(CURDIR)/debian/$(PACKAGE)
 
-include /usr/share/quilt/quilt.make
-
-build: build-stamp
-build-stamp: patch
+build: build-arch build-indep
+build-arch: build-stamp
+build-indep: build-stamp
+build-stamp:
 	dh_testdir
 	# Add commands to compile the package here
 	$(PERL) Makefile.PL INSTALLDIRS=vendor
@@ -26,7 +26,7 @@ build-stamp: patch
 	$(MAKE) test
 	touch $@
 
-clean:  unpatch
+clean:
 	dh_testdir
 	dh_testroot
 	dh_clean build-stamp install-stamp
@@ -67,4 +67,4 @@ binary: binary-indep binary-arch
 get-orig-source:
 	uscan --force-download
 
-.PHONY: build clean binary-indep binary-arch binary install
+.PHONY: build-indep build-arch build clean binary-indep binary-arch binary install
